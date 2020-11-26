@@ -1,7 +1,4 @@
-roBott - Copyright (C) 2005-2020  Vitor Santos Bottazzi
-======
-
-# Off-line industrial robot programming framework
+# roBott - Off-line industrial robot programming framework
 
 Abstract — The industrial robot programming is a work for specialist
 in robotics. Today, this work is very hard because there are many
@@ -23,12 +20,17 @@ Mitsubishi constructors.
 Index Terms — Framework, off-line programming, robot code genera-
 tor.
 
-# TODO's
+# TODO's list
 
+- Find an alternative for old Canvas3D, maybe Point Cloud based
 - Translate all terms/standards to english allowing easier cooperation;
 - Refactoring on modules to reduce duplicated code and improve design;
 - Upgrade from JOGL towards WebGL to comply with Web standards
 - Incorporate novel 3D exchange formats towards (e.g. PCL, IFC, xMCF, etc)
+- Check current networking protocol used by robot manufacturers for integration
+- Add a newer ftp/scp feature to load the programs directly into the robot controller
+- Create a docker file to run and expose the code generation/translation via API
+
 
 # Contact
 
@@ -36,6 +38,8 @@ For enquiries about this open source project please contact:
 Dr. Vitor Santos Bottazzi - robott_v1 at yahoo dot com dot br
 
 # License
+
+    roBott - Copyright (C) 2002-2020  Vitor Santos Bottazzi
 
     This program is free software: you can redistribute it and/or modify
     it under the terms of the GNU General Public License as published by
