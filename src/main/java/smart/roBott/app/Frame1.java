@@ -1,20 +1,20 @@
 /**
- *     
-    roBott - Copyright (C) 2002  Vitor Santos Bottazzi
+ *
+ roBott - Copyright (C) 2002  Vitor Santos Bottazzi
 
-    This program is free software: you can redistribute it and/or modify
-    it under the terms of the GNU General Public License as published by
-    the Free Software Foundation, either version 3 of the License, or
-    (at your option) any later version.
+ This program is free software: you can redistribute it and/or modify
+ it under the terms of the GNU General Public License as published by
+ the Free Software Foundation, either version 3 of the License, or
+ (at your option) any later version.
 
-    This program is distributed in the hope that it will be useful,
-    but WITHOUT ANY WARRANTY; without even the implied warranty of
-    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-    GNU General Public License for more details.
+ This program is distributed in the hope that it will be useful,
+ but WITHOUT ANY WARRANTY; without even the implied warranty of
+ MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ GNU General Public License for more details.
 
-    You should have received a copy of the GNU General Public License
-    along with this program.  If not, see <https://www.gnu.org/licenses/>.
- *    
+ You should have received a copy of the GNU General Public License
+ along with this program.  If not, see <https://www.gnu.org/licenses/>.
+ *
  */
 
 package smart.roBott.app;
@@ -22,26 +22,15 @@ package smart.roBott.app;
 import smart.roBott.app.comms.FTP;
 import smart.roBott.app.opt.*;
 import smart.roBott.app.service.*;
-import smart.roBott.app.visualizations.*;
 
-import smart.roBott.app.coord.Coord_World;
-import java.awt.BorderLayout;
-import java.awt.Button;
-import java.awt.Color;
-import java.awt.Dimension;
-import java.awt.FileDialog;
-import java.awt.Font;
-import java.awt.Rectangle;
-import java.awt.SystemColor;
-import java.awt.Toolkit;
+import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.awt.event.MouseEvent;
 
 import java.util.Iterator;
 
-import javax.media.j3d.BranchGroup;
-import javax.media.j3d.Node;
+//import javax.media.j3d.BranchGroup;
+//import javax.media.j3d.Node;
 import javax.swing.BorderFactory;
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -58,13 +47,9 @@ import javax.swing.JTextField;
 import javax.swing.JToolBar;
 import javax.swing.border.BevelBorder;
 import javax.swing.table.DefaultTableModel;
-import java.util.ArrayList;
-import javax.swing.event.CellEditorListener;
-import javax.swing.event.ChangeEvent;
-import java.util.List;
 //import java.text.DecimalFormat;
 
-final public class Frame1 extends JFrame 
+final public class Frame1 extends JFrame
 {
   private JButton buttonHelp = new JButton();
   private JButton buttonClose = new JButton();
@@ -94,8 +79,8 @@ final public class Frame1 extends JFrame
   private Button newPointSelectionRef = new Button();
   private JTextField jTextField1 = new JTextField();
   private JLabel jLabel1 = new JLabel();
-  
-//WORKAREA
+
+  //WORKAREA
   private JTextField jTextField2 = new JTextField();
   private JTextField jTextField3 = new JTextField();
   private JTextField jTextField4 = new JTextField();
@@ -113,56 +98,56 @@ final public class Frame1 extends JFrame
 
 //Programa p;//ponteiro para o programa generico que vai ser utilizado
 
-Carregador carrega = new Carregador();
+  Carregador carrega = new Carregador();
 
-Select sel = new Select();
+  Select sel = new Select();
 
-SideCoordView sv;
+//SideCoordView sv;
 
-private JPanel telaWorld = new JPanel();    
+  JPanel telaWorld = new JPanel();
 
-final int P_Rapid = 1;
-final int P_Karel = 2;
-final int P_MelfaBasic = 3;
-final int P_Trident = 4;
-int Protocolo = this.P_Rapid;
+  final int P_Rapid = 1;
+  final int P_Karel = 2;
+  final int P_MelfaBasic = 3;
+  final int P_Trident = 4;
+  int Protocolo = this.P_Rapid;
 
-final int M_JUNTA = 1;
-final int M_LINEAR = 2;
-final int M_CIRCULAR = 3;
-int movimento = this.M_JUNTA;
+  final int M_JUNTA = 1;
+  final int M_LINEAR = 2;
+  final int M_CIRCULAR = 3;
+  int movimento = this.M_JUNTA;
 
 //String nome;
 
-final int V_BAI = 100;
-final int V_MED = 500;
-final int V_ALT = 1000;
-int velocidade = this.V_BAI;
+  final int V_BAI = 100;
+  final int V_MED = 500;
+  final int V_ALT = 1000;
+  int velocidade = this.V_BAI;
 
 
-final int P_FINE = 0;
-final int P_10= 10;
-final int P_50 = 50;
-final int P_100 = 100;
-final int P_Max = 200;
-int precisao = this.P_FINE;
+  final int P_FINE = 0;
+  final int P_10= 10;
+  final int P_50 = 50;
+  final int P_100 = 100;
+  final int P_Max = 200;
+  int precisao = this.P_FINE;
 
 
 //private double mx,my;
 
-private JButton copy = new JButton();
+  private JButton copy = new JButton();
 
-/**
- * 
- * 
- * @param
- * @return
- * @see
- * 
- */
+  /**
+   *
+   *
+   * @param
+   * @return
+   * @see
+   *
+   */
   public void init()
   {
-    
+
     try
     {
       jbInit();
@@ -173,308 +158,315 @@ private JButton copy = new JButton();
     }
 
   }
-/**
- * D carga no ponto, rotulo dos pontos
- * 
- * @param
- * @return
- * @see
- * 
- */
-
-public void CarregadorPontos(Carregador carga) throws Exception
-{
-carga.CarregadorPonto(this.velocidade, this.precisao);
-}
+  /**
+   * D carga no ponto, rotulo dos pontos
+   *
+   * @param
+   * @return
+   * @see
+   *
+   */
 
 
-/**
- * Principal
- * 
- * @param
- * @return
- * @see
- **/
+  public JPanel getTelaWorld() {
+    return telaWorld;
+  }
+
+  public void CarregadorPontos(Carregador carga) throws Exception
+  {
+    carga.CarregadorPonto(this.velocidade, this.precisao);
+  }
+
+
+  /**
+   * Principal
+   *
+   * @param
+   * @return
+   * @see
+   **/
 
   public static void main(String[] args)
   {
-    JFrame frame = new JFrame();
+    Frame1 frame = new Frame1();
     frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
     Dimension d = Toolkit.getDefaultToolkit().getScreenSize();
     Dimension frameSize = frame.getSize();
     frame.setLocation((d.width - frameSize.width) / 2, (d.height - frameSize.height) / 2);
+//    frame.pack();
     frame.setVisible(true);
-    
+//    Main main = new Main();
   }
 
-/***************************************
- * Retorna o protocolo do fabricante.
- * 
- * @return O inteiro que representa o protocolo de trabalho do rob.
- * @see
- * 
- */
-public int getProtocolo()
-{
-	return this.Protocolo;
-}
+  /***************************************
+   * Retorna o protocolo do fabricante.
+   *
+   * @return O inteiro que representa o protocolo de trabalho do rob.
+   * @see
+   *
+   */
+  public int getProtocolo()
+  {
+    return this.Protocolo;
+  }
 
-public int getVel()
-{
-	return this.velocidade;
-}
+  public int getVel()
+  {
+    return this.velocidade;
+  }
 
-public int getPrecision()
-{
-	return this.precisao;
-}
+  public int getPrecision()
+  {
+    return this.precisao;
+  }
 
 //Movimento
-/**
- * 
- * 
- * @param
- * @return
- * @see
- * 
- */
+  /**
+   *
+   *
+   * @param
+   * @return
+   * @see
+   *
+   */
   private void Junta_actionPerformed(ActionEvent e)
   {this.movimento = this.M_JUNTA;
   }
 
-/**
- * 
- * 
- * @param
- * @return
- * @see
- * 
- */   
+  /**
+   *
+   *
+   * @param
+   * @return
+   * @see
+   *
+   */
   private void Linear_actionPerformed(ActionEvent e)
   {this.movimento = this.M_LINEAR;
   }
 
-/**
- * 
- * 
- * @param
- * @return
- * @see
- * 
- */
+  /**
+   *
+   *
+   * @param
+   * @return
+   * @see
+   *
+   */
   private void Circular_actionPerformed(ActionEvent e)
   {this.movimento = this.M_CIRCULAR;
   }
-  
-  
+
+
 //Velocidade  
-/**
- * 
- * 
- * @param
- * @return
- * @see
- * 
- */
+  /**
+   *
+   *
+   * @param
+   * @return
+   * @see
+   *
+   */
   private void Baixa_actionPerformed(ActionEvent e)
   {this.velocidade = this.V_BAI;
-  this.Baixa.setSelected(true);
-  this.Media.setSelected(false);
-  this.Alta.setSelected(false);
+    this.Baixa.setSelected(true);
+    this.Media.setSelected(false);
+    this.Alta.setSelected(false);
   }
 
-/**
- * 
- * 
- * @param
- * @return
- * @see
- * 
- */
+  /**
+   *
+   *
+   * @param
+   * @return
+   * @see
+   *
+   */
   private void Media_actionPerformed(ActionEvent e)
   {this.velocidade = this.V_MED;
-  this.Baixa.setSelected(false);
-  this.Media.setSelected(true);
-  this.Alta.setSelected(false);
+    this.Baixa.setSelected(false);
+    this.Media.setSelected(true);
+    this.Alta.setSelected(false);
   }
 
-/**
- * 
- * 
- * @param
- * @return
- * @see
- * 
- */
+  /**
+   *
+   *
+   * @param
+   * @return
+   * @see
+   *
+   */
   private void Alta_actionPerformed(ActionEvent e)
   {this.velocidade = this.V_ALT;
-  this.Baixa.setSelected(false);
-  this.Media.setSelected(false);
-  this.Alta.setSelected(true);
+    this.Baixa.setSelected(false);
+    this.Media.setSelected(false);
+    this.Alta.setSelected(true);
   }
 
 
 //Preciso
-/**
- * 
- * 
- * @param
- * @return
- * @see
- * 
- */
+  /**
+   *
+   *
+   * @param
+   * @return
+   * @see
+   *
+   */
   private void Fine_actionPerformed(ActionEvent e)
   {this.precisao = this.P_FINE;
-  P10.setSelected(false);
-  P50.setSelected(false);
-  P100.setSelected(false);
-  P200.setSelected(false);
-  Fine.setSelected(true);
+    P10.setSelected(false);
+    P50.setSelected(false);
+    P100.setSelected(false);
+    P200.setSelected(false);
+    Fine.setSelected(true);
   }
 
-/**
- * 
- * 
- * @param
- * @return
- * @see
- * 
- */
+  /**
+   *
+   *
+   * @param
+   * @return
+   * @see
+   *
+   */
   private void P10_actionPerformed(ActionEvent e)
   {this.precisao = this.P_10;
-  Fine.setSelected(false);  
-  P50.setSelected(false);
-  P100.setSelected(false);
-  P200.setSelected(false);
-  P10.setSelected(true);
+    Fine.setSelected(false);
+    P50.setSelected(false);
+    P100.setSelected(false);
+    P200.setSelected(false);
+    P10.setSelected(true);
   }
 
-/**
- * 
- * 
- * @param
- * @return
- * @see
- * 
- */ 
+  /**
+   *
+   *
+   * @param
+   * @return
+   * @see
+   *
+   */
   private void P50_actionPerformed(ActionEvent e)
   {this.precisao = this.P_50;
-  Fine.setSelected(false);
-  P10.setSelected(false);
-  P100.setSelected(false);
-  P200.setSelected(false);
-  P50.setSelected(true);
+    Fine.setSelected(false);
+    P10.setSelected(false);
+    P100.setSelected(false);
+    P200.setSelected(false);
+    P50.setSelected(true);
   }
 
-/**
- * 
- * 
- * @param
- * @return
- * @see
- * 
- */
+  /**
+   *
+   *
+   * @param
+   * @return
+   * @see
+   *
+   */
   private void P100_actionPerformed(ActionEvent e)
-  {this.precisao = this.P_100;  
-  Fine.setSelected(false);
-  P10.setSelected(false);
-  P50.setSelected(false);
-  P200.setSelected(false);
-  P100.setSelected(true);
+  {this.precisao = this.P_100;
+    Fine.setSelected(false);
+    P10.setSelected(false);
+    P50.setSelected(false);
+    P200.setSelected(false);
+    P100.setSelected(true);
   }
 
-/**
- * 
- * 
- * @param
- * @return
- * @see
- * 
- */
+  /**
+   *
+   *
+   * @param
+   * @return
+   * @see
+   *
+   */
   private void P200_actionPerformed(ActionEvent e)
   {this.precisao = this.P_Max;
-  Fine.setSelected(false);
-  P10.setSelected(false);
-  P50.setSelected(false);
-  P100.setSelected(false);
-  P200.setSelected(true);
+    Fine.setSelected(false);
+    P10.setSelected(false);
+    P50.setSelected(false);
+    P100.setSelected(false);
+    P200.setSelected(true);
   }
 
 //Protocolos
-/**
- * 
- * 
- * @param
- * @return
- * @see
- * 
- */
+  /**
+   *
+   *
+   * @param
+   * @return
+   * @see
+   *
+   */
   private void Proto_Rapid_actionPerformed(ActionEvent e)
   {this.Protocolo = this.P_Rapid;
-  this.Proto_Rapid.setSelected(true);
-  this.Proto_Karel.setSelected(false);
-  this.Proto_MelfaBasic.setSelected(false);
-  this.Proto_Trident.setSelected(false);
+    this.Proto_Rapid.setSelected(true);
+    this.Proto_Karel.setSelected(false);
+    this.Proto_MelfaBasic.setSelected(false);
+    this.Proto_Trident.setSelected(false);
   }
 
-/**
- * 
- * 
- * @param
- * @return
- * @see
- * 
- */
+  /**
+   *
+   *
+   * @param
+   * @return
+   * @see
+   *
+   */
   private void Proto_Karel_actionPerformed(ActionEvent e)
   {this.Protocolo = this.P_Karel;
-  this.Proto_Rapid.setSelected(false);
-  this.Proto_Karel.setSelected(true);
-  this.Proto_MelfaBasic.setSelected(false);
-  this.Proto_Trident.setSelected(false);
+    this.Proto_Rapid.setSelected(false);
+    this.Proto_Karel.setSelected(true);
+    this.Proto_MelfaBasic.setSelected(false);
+    this.Proto_Trident.setSelected(false);
   }
 
-/**
- * 
- * 
- * @param
- * @return
- * @see
- * 
- */
+  /**
+   *
+   *
+   * @param
+   * @return
+   * @see
+   *
+   */
   private void Proto_MelfaBasic_actionPerformed(ActionEvent e)
   {this.Protocolo = this.P_MelfaBasic;
-  this.Proto_Rapid.setSelected(false);
-  this.Proto_Karel.setSelected(false);
-  this.Proto_MelfaBasic.setSelected(true);
-  this.Proto_Trident.setSelected(false);
+    this.Proto_Rapid.setSelected(false);
+    this.Proto_Karel.setSelected(false);
+    this.Proto_MelfaBasic.setSelected(true);
+    this.Proto_Trident.setSelected(false);
   }
 
-/**
- * 
- * 
- * @param
- * @return
- * @see
- * 
- */
+  /**
+   *
+   *
+   * @param
+   * @return
+   * @see
+   *
+   */
   private void Proto_Trident_actionPerformed(ActionEvent e)
   {this.Protocolo = this.P_Trident;
-  this.Proto_Rapid.setSelected(false);
-  this.Proto_Karel.setSelected(false);
-  this.Proto_MelfaBasic.setSelected(false);
-  this.Proto_Trident.setSelected(true);
+    this.Proto_Rapid.setSelected(false);
+    this.Proto_Karel.setSelected(false);
+    this.Proto_MelfaBasic.setSelected(false);
+    this.Proto_Trident.setSelected(true);
   }
 
-  
+
   public Frame1()
   {
-  
+
     try
     {
       jbInit();
-      
-  this.carrega.pro_x = this.carrega.fabrica.getInstanciaPrograma();
-  this.carrega.CarregadorTipoNomePrograma(this.carrega.pro_x, this.getProtocolo(), this.getVel(), this.getPrecision());//Inicializa Programa com nome e tipo do servo
+
+      this.carrega.pro_x = this.carrega.fabrica.getInstanciaPrograma();
+      this.carrega.CarregadorTipoNomePrograma(this.carrega.pro_x, this.getProtocolo(), this.getVel(), this.getPrecision());//Inicializa Programa com nome e tipo do servo
+
     }
     catch(Exception e)
     {
@@ -485,81 +477,81 @@ public int getPrecision()
 
   private void jbInit() throws Exception
   {
-  
+
     this.setJMenuBar(menuBar);
     this.getContentPane().setLayout(layoutMain);
     panelCenter.setLayout(null);
     BotaoGerarPrograma.addActionListener(new ActionListener()
+    {
+      public void actionPerformed(ActionEvent e)
       {
-        public void actionPerformed(ActionEvent e)
-        {
-          BotaoGerarPrograma_actionPerformed(e);
-        }
-      });
+        BotaoGerarPrograma_actionPerformed(e);
+      }
+    });
     copy.setText("Send to Controller");
     copy.setBounds(new Rectangle(10, 390, 210, 40));
     copy.addActionListener(new ActionListener()
+    {
+      public void actionPerformed(ActionEvent e)
       {
-        public void actionPerformed(ActionEvent e)
-        {
-          copy_actionPerformed(e);
-        }
-      });
+        copy_actionPerformed(e);
+      }
+    });
     jButton1.setText("Resize Workspace");
     jButton1.setBounds(new Rectangle(20, 635, 185, 30));
     jButton1.addActionListener(new ActionListener()
+    {
+      public void actionPerformed(ActionEvent e)
       {
-        public void actionPerformed(ActionEvent e)
-        {
-          jButton1_actionPerformed(e);
-        }
-      });
+        jButton1_actionPerformed(e);
+      }
+    });
     Fine.setText("Fine");
     Fine.setBounds(new Rectangle(0, 85, 45, 15));
     Fine.setSelected(true);
     Fine.addActionListener(new ActionListener()
+    {
+      public void actionPerformed(ActionEvent e)
       {
-        public void actionPerformed(ActionEvent e)
-        {
-          Fine_actionPerformed(e);
-        }
-      });
+        Fine_actionPerformed(e);
+      }
+    });
     P10.setText("-10");
     P10.setBounds(new Rectangle(45, 85, 45, 15));
     P10.addActionListener(new ActionListener()
+    {
+      public void actionPerformed(ActionEvent e)
       {
-        public void actionPerformed(ActionEvent e)
-        {
-          P10_actionPerformed(e);
-        }
-      });
+        P10_actionPerformed(e);
+      }
+    });
     P50.setText("-50");
     P50.setBounds(new Rectangle(90, 85, 45, 15));
     P50.addActionListener(new ActionListener()
+    {
+      public void actionPerformed(ActionEvent e)
       {
-        public void actionPerformed(ActionEvent e)
-        {
-          P50_actionPerformed(e);
-        }
-      });
+        P50_actionPerformed(e);
+      }
+    });
     P100.setText("-100");
     P100.setBounds(new Rectangle(135, 85, 50, 15));
     P100.addActionListener(new ActionListener()
+    {
+      public void actionPerformed(ActionEvent e)
       {
-        public void actionPerformed(ActionEvent e)
-        {
-          P100_actionPerformed(e);
-        }
-      });
+        P100_actionPerformed(e);
+      }
+    });
     P200.setText("-200");
     P200.setBounds(new Rectangle(185, 85, 50, 15));
     P200.addActionListener(new ActionListener()
+    {
+      public void actionPerformed(ActionEvent e)
       {
-        public void actionPerformed(ActionEvent e)
-        {
-          P200_actionPerformed(e);
-        }
-      });
+        P200_actionPerformed(e);
+      }
+    });
     jLabel11.setText("Precision:");
     jLabel11.setBounds(new Rectangle(10, 60, 85, 15));
     scrollPane.setBounds(new Rectangle(805, 20, 210, 645));
@@ -603,25 +595,25 @@ public int getPrecision()
     newPointSelectionRef.setLabel("Select Points");
     newPointSelectionRef.setBounds(new Rectangle(10, 170, 140, 35));
     newPointSelectionRef.addActionListener(new ActionListener()
+    {
+      public void actionPerformed(ActionEvent e)
       {
-        public void actionPerformed(ActionEvent e)
-        {
-          newPointSelectionRef_actionPerformed(e);
-        }
-      });
+        newPointSelectionRef_actionPerformed(e);
+      }
+    });
     jTextField1.setBounds(new Rectangle(160, 185, 60, 20));
     jTextField1.addActionListener(new ActionListener()
+    {
+      public void actionPerformed(ActionEvent e)
       {
-        public void actionPerformed(ActionEvent e)
-        {
-          jTextField1_actionPerformed(e);
-        }
-      });
+        jTextField1_actionPerformed(e);
+      }
+    });
     jLabel1.setText("ZSelection");
     jLabel1.setBounds(new Rectangle(165, 165, 60, 20));
 
     telaWorld.setBounds(new Rectangle(235, 20, 565, 645));
-    telaWorld.setBackground(Color.black);
+    telaWorld.setBackground(Color.blue);
     telaWorld.setBorder(BorderFactory.createEmptyBorder(2, 2, 2, 2));
 
     scrollPane.getViewport().add(jTable, null);
@@ -653,46 +645,46 @@ public int getPrecision()
     this.getContentPane().add(telaWorld, null);
     this.getContentPane().add(copy, null);
     this.getContentPane().add(load, null);
- //   this.getContentPane().add(scrollPane, null);
+    //   this.getContentPane().add(scrollPane, null);
     load.setText("Load Coordinates");
     load.setBounds(new Rectangle(10, 120, 210, 35));
     load.addActionListener(new ActionListener()
+    {
+      public void actionPerformed(ActionEvent e)
       {
-        public void actionPerformed(ActionEvent e)
-        {
-          load_actionPerformed(e);
-        }
-      });
+        load_actionPerformed(e);
+      }
+    });
 
     this.setSize(new Dimension(400, 300));
     this.setTitle("RoBott Trajectory Generator - OLP Tool");
     menuFile.setText("File");
     menuFileExit.setText("Exit");
     menuFileExit.addActionListener(new ActionListener()
+    {
+      public void actionPerformed(ActionEvent ae)
       {
-        public void actionPerformed(ActionEvent ae)
-        {
-          fileExit_ActionPerformed(ae);
-        }
-      });
+        fileExit_ActionPerformed(ae);
+      }
+    });
     menuFTP.setText("FTP");
     menuFTPConfiguration.setText("Configuration");
     menuFTPConfiguration.addActionListener(new ActionListener()
+    {
+      public void actionPerformed(ActionEvent ae)
       {
-        public void actionPerformed(ActionEvent ae)
-        {
-          FTPConfiguration_ActionPerformed(ae);
-        }
-      });
+        FTPConfiguration_ActionPerformed(ae);
+      }
+    });
     menuHelp.setText("Help");
     menuHelpAbout.setText("About");
     menuHelpAbout.addActionListener(new ActionListener()
+    {
+      public void actionPerformed(ActionEvent ae)
       {
-        public void actionPerformed(ActionEvent ae)
-        {
-          helpAbout_ActionPerformed(ae);
-        }
-      });
+        helpAbout_ActionPerformed(ae);
+      }
+    });
     statusBar.setText("");
     buttonOpen.setToolTipText("Open File");
     buttonClose.setToolTipText("Close File");
@@ -706,7 +698,7 @@ public int getPrecision()
     toolBar.add(buttonOpen);
     toolBar.add(buttonClose);
     toolBar.add(buttonHelp);
-    
+
     this.getContentPane().add(statusBar, BorderLayout.SOUTH);
     this.getContentPane().add(toolBar, BorderLayout.NORTH);
     this.getContentPane().add(panelCenter, BorderLayout.CENTER);
@@ -724,31 +716,31 @@ public int getPrecision()
     Alta.setText("High");
     Alta.setBounds(new Rectangle(170, 35, 60, 15));
     Alta.addActionListener(new ActionListener()
+    {
+      public void actionPerformed(ActionEvent e)
       {
-        public void actionPerformed(ActionEvent e)
-        {
-          Alta_actionPerformed(e);
-        }
-      });
+        Alta_actionPerformed(e);
+      }
+    });
     Media.setText("Medium");
     Media.setBounds(new Rectangle(90, 35, 70, 15));
     Media.addActionListener(new ActionListener()
+    {
+      public void actionPerformed(ActionEvent e)
       {
-        public void actionPerformed(ActionEvent e)
-        {
-          Media_actionPerformed(e);
-        }
-      });
+        Media_actionPerformed(e);
+      }
+    });
     Baixa.setText("Low");
     Baixa.setBounds(new Rectangle(15, 35, 65, 15));
     Baixa.setSelected(true);
     Baixa.addActionListener(new ActionListener()
+    {
+      public void actionPerformed(ActionEvent e)
       {
-        public void actionPerformed(ActionEvent e)
-        {
-          Baixa_actionPerformed(e);
-        }
-      });
+        Baixa_actionPerformed(e);
+      }
+    });
     jLabel2.setText("Velocity:");
     jLabel2.setBounds(new Rectangle(10, 10, 105, 15));
     jLabel2.setToolTipText("Escolha a velocidade do movimento:");
@@ -758,53 +750,54 @@ public int getPrecision()
     Proto_Rapid.setBounds(new Rectangle(15, 210, 91, 24));
     Proto_Rapid.setSelected(true);
     Proto_Rapid.addActionListener(new ActionListener()
+    {
+      public void actionPerformed(ActionEvent e)
       {
-        public void actionPerformed(ActionEvent e)
-        {
-          Proto_Rapid_actionPerformed(e);
-        }
-      });
+        Proto_Rapid_actionPerformed(e);
+      }
+    });
     Proto_Karel.setText("Karel (Fanuc)");
     Proto_Karel.setBounds(new Rectangle(15, 235, 91, 24));
     Proto_Karel.addActionListener(new ActionListener()
+    {
+      public void actionPerformed(ActionEvent e)
       {
-        public void actionPerformed(ActionEvent e)
-        {
-          Proto_Karel_actionPerformed(e);
-        }
-      });
+        Proto_Karel_actionPerformed(e);
+      }
+    });
     Proto_MelfaBasic.setText("Melfa-Basic IV (Mitsubishi)");
     Proto_MelfaBasic.setBounds(new Rectangle(15, 260, 155, 25));
     Proto_MelfaBasic.addActionListener(new ActionListener()
+    {
+      public void actionPerformed(ActionEvent e)
       {
-        public void actionPerformed(ActionEvent e)
-        {
-          Proto_MelfaBasic_actionPerformed(e);
-        }
-      });
-      
-   Proto_Trident.setText("Trident (PUMA)");
-   Proto_Trident.setBounds(new Rectangle(15, 285, 150, 25));     
-   Proto_Trident.addActionListener(new ActionListener()
-     {
-        public void actionPerformed(ActionEvent e)
-        {
-          Proto_Trident_actionPerformed(e);
-        }
-      }); 
+        Proto_MelfaBasic_actionPerformed(e);
+      }
+    });
 
- InitRobot();
- 
-}
+    Proto_Trident.setText("Trident (PUMA)");
+    Proto_Trident.setBounds(new Rectangle(15, 285, 150, 25));
+    Proto_Trident.addActionListener(new ActionListener()
+    {
+      public void actionPerformed(ActionEvent e)
+      {
+        Proto_Trident_actionPerformed(e);
+      }
+    });
 
 
-public void InitRobot() throws Exception
-{
+    InitRobot();
+
+  }
+
+
+  public void InitRobot() throws Exception
+  {
     this.carrega.Componente = this.carrega.getPrograma();
 
-    this.carrega.CarregaArquivoCoordEntrada(System.getProperty("user.dir").concat("\\assets\\bracao.stl"),  this.carrega.Componente);
-    
- //   this.carrega.ComponentsList.add(component);
+    this.carrega.CarregaArquivoCoordEntrada(System.getProperty("user.dir").concat("/assets/bracao.stl"),  this.carrega.Componente);
+
+    //   this.carrega.ComponentsList.add(component);
 
     sel.HashSetToArray( this.carrega.Componente);//Programa(this.carrega.ComponentsList.get(0)));
 
@@ -817,107 +810,155 @@ public void InitRobot() throws Exception
     this.jTextField6.setText(String.valueOf( this.carrega.Componente.supy)+ " mm");
     this.jTextField7.setText(String.valueOf( this.carrega.Componente.supz)+ " mm");
 
-}
-
-void fileExit_ActionPerformed(ActionEvent e)
-{
-  System.exit(0);
-}
-
-void FTPConfiguration_ActionPerformed(ActionEvent e)
-{
-Frame1_FTPConfiguration ftpconf = new Frame1_FTPConfiguration();
-JOptionPane.showMessageDialog(this, ftpconf , "FTP Configuration", JOptionPane.OK_CANCEL_OPTION);
-}
-
-void helpAbout_ActionPerformed(ActionEvent e)
-{
-JOptionPane.showMessageDialog(this, new Frame1_AboutBoxPanel1(), "About", JOptionPane.PLAIN_MESSAGE);
-}
-
-private void jTextField1_actionPerformed(ActionEvent e)
-{
-
-}    
-
-private void showWA(Carregador carga) throws Exception
-  {
-   telaWorld.removeAll();//limpa a tela
-    
-  //  sv = new SideCoordView(carga);//cria a tela
-   
-  //  sv.setBounds(telaWorld.getBounds());//tamanho da tela
-  //  sv.setVisible(true); //apresenta
-   
-  //  telaWorld.add("Center",sv.getCanvas()); //adiciona
-  //  sv.dispose();
-}
-
-
-
-
-
-private void ShowWAndPoints(Carregador carga)//Programa newP)
-{
- 
-  sv.NewSolid(carga, false);
-    
-  sv.setBounds(telaWorld.getBounds());//tamanho da tela
-  sv.setVisible(true); //apresenta
-   
-  // telaWorld.add("Center",sv.getCanvas()); //adiciona
-  // sv.dispose();
-}
-
-private void load_actionPerformed(ActionEvent e)
-{
-String filename = "";
-      
-      FileDialog f = new FileDialog(this, "Load", FileDialog.LOAD);
-      f.setDirectory(System.getProperty("user.dir").concat("\\assets"));
-      f.setVisible(true);// Display the dialog and block.
-      
-      //filename = f.getFile();    // Get the user's response
-      
-      if (!(f.getFile() == null) )//.equals(filename))
-      {
-      try {
-      filename = f.getDirectory() + f.getFile();
-      
-      this.carrega.pro_x = this.carrega.getPrograma();//ponteiro para o obj programa para visualizao das coord
-           
-      this.carrega.CarregaArquivoCoordEntrada(filename, this.carrega.pro_x);    
-      
-    //Workspace bounds
-    String aux = null;
-
-    this.jTextField2.setText(aux.valueOf(this.carrega.pro_x.infx)+ " mm");
-    this.jTextField3.setText(aux.valueOf(this.carrega.pro_x.infy)+ " mm");
-    this.jTextField4.setText(aux.valueOf(this.carrega.pro_x.infz)+ " mm");
-    this.jTextField5.setText(aux.valueOf(this.carrega.pro_x.supx)+ " mm");
-    this.jTextField6.setText(aux.valueOf(this.carrega.pro_x.supy)+ " mm");
-    this.jTextField7.setText(aux.valueOf(this.carrega.pro_x.supz)+ " mm");
-  
-    sel.HashSetToArray(this.carrega.pro_x);//trocado pelo de cima
-      
-    this.carrega.pro_x.isMesh = true;
-
-    this.ShowWAndPoints(this.carrega); // Mostra coordenadas em J3D
-      
-    this.jTable.setModel(new DefaultTableModel(this.carrega.pro_x.coord_table,new String [] {"X", "Y", "Z"}));
-      
-    this.carrega.CarregadorPonto(this.getVel(), this.getPrecision()); // gera os comandos lineares na ling generica para as coord carregadas setando a vel */
-      
-    this.jTextField1.setText(this.carrega.pro_x.toStringSelPlan());
-   }
-   catch (Exception excep)
-  { 
-   excep.printStackTrace();
   }
-  }//If filename 
-}
 
-FTP ftp = new FTP();
+  void fileExit_ActionPerformed(ActionEvent e)
+  {
+    System.exit(0);
+  }
+
+  void FTPConfiguration_ActionPerformed(ActionEvent e)
+  {
+    Frame1_FTPConfiguration ftpconf = new Frame1_FTPConfiguration();
+    JOptionPane.showMessageDialog(this, ftpconf , "FTP Configuration", JOptionPane.OK_CANCEL_OPTION);
+  }
+
+  void helpAbout_ActionPerformed(ActionEvent e)
+  {
+    JOptionPane.showMessageDialog(this, new Frame1_AboutBoxPanel1(), "About", JOptionPane.PLAIN_MESSAGE);
+  }
+
+  private void jTextField1_actionPerformed(ActionEvent e)
+  {
+
+  }
+
+//  private void showWA(Carregador carga) throws Exception
+//  {
+//      telaWorld.removeAll();//limpa a tela
+//      sv = new SideCoordView(carga);//cria a tela
+//      sv.setBounds(telaWorld.getBounds());//tamanho da tela
+//      sv.setVisible(true); //apresenta
+//      telaWorld.add("Center",sv.getCanvas()); //adiciona
+//      sv.dispose();
+//  }
+
+
+  private void showWA(Carregador carga) throws Exception {
+
+
+//    Chart chart = AWTChartComponentFactory.chart(Quality.Advanced, "awt");
+//    Workcell wc = new Workcell(3,3,0);
+//    chart.getScene().getGraph().add(wc.getShape());
+//    telaWorld.add((Panel)chart.getCanvas());
+
+
+//    Chart chart = AWTChartComponentFactory.chart(Quality.Advanced, IChartComponentFactory.Toolkit.swing);
+////    chart.
+//    Workcell wc = new Workcell(3,3,0);
+//
+//    org.jzy3d.plot3d.primitives.Shape surface = wc.getShape(); //Builder.buildOrthonormal(new OrthonormalGrid(rX, stepsX, rY, stepsY), mapper);
+//    surface.setColorMapper(new ColorMapper(new ColorMapRainbow(), surface.getBounds().getZmin(), surface.getBounds().getZmax(), new org.jzy3d.colors.Color(1, 1, 1, .5f)));
+//    surface.setFaceDisplayed(true);
+//    surface.setWireframeDisplayed(false);
+////    surface.set
+//
+////    org.jzy3d.chart.Chart chart = new org.jzy3d.chart.Chart(Quality.Advanced,"swing");
+//    chart.getScene().getGraph().add(surface);
+//
+//    IAxeLayout l = chart.getAxeLayout();
+////    l.setMainColor(org.jzy3d.colors.Color.GRAY);
+//
+//    //JPanel p = new JPanel(new BorderLayout()); //another panel will be added to this panel and aligned left (BorderLayout.WEST)
+//    telaWorld.add((JPanel)chart.getCanvas(),BorderLayout.CENTER);
+
+
+//    chart.getScene().getGraph().add(wc.getShape());
+//
+//    AWTCameraMouseController controller = new AWTCameraMouseController(chart);
+//    Component canvas = (Component) chart.getCanvas();
+//    canvas.addMouseListener(controller);
+//    canvas.addMouseMotionListener(controller);
+//    canvas.addMouseWheelListener(controller);
+//    canvas.setBounds(telaWorld.getBounds());//tamanho da tela
+//    canvas.setSize(3000,1500);
+//    canvas.setVisible(true);
+//    telaWorld.add(canvas, BorderLayout.CENTER);
+
+//    Workcell wc = new Workcell(3,3,0);
+
+
+
+//    this.setContentPane(telaWorld);
+//    this.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+//    this.pack();
+//    this.setTitle("Embed Newt Test");
+//    this.setVisible(true);
+
+  }
+
+
+
+
+  private void ShowWAndPoints(Carregador carga)//Programa newP)
+  {
+
+//  sv.NewSolid(carga, false);
+//
+//  sv.setBounds(telaWorld.getBounds());//tamanho da tela
+//  sv.setVisible(true); //apresenta
+
+    // telaWorld.add("Center",sv.getCanvas()); //adiciona
+    // sv.dispose();
+  }
+
+  private void load_actionPerformed(ActionEvent e)
+  {
+    String filename = "";
+
+    FileDialog f = new FileDialog(this, "Load", FileDialog.LOAD);
+    f.setDirectory(System.getProperty("user.dir").concat("\\assets"));
+    f.setVisible(true);// Display the dialog and block.
+
+    if (!(f.getFile() == null) )
+    {
+      try {
+        filename = f.getDirectory() + f.getFile();
+
+        this.carrega.pro_x = this.carrega.getPrograma();//ponteiro para o obj programa para visualizao das coord
+
+        this.carrega.CarregaArquivoCoordEntrada(filename, this.carrega.pro_x);
+
+        //Workspace bounds
+        String aux = null;
+
+        this.jTextField2.setText(aux.valueOf(this.carrega.pro_x.infx)+ " mm");
+        this.jTextField3.setText(aux.valueOf(this.carrega.pro_x.infy)+ " mm");
+        this.jTextField4.setText(aux.valueOf(this.carrega.pro_x.infz)+ " mm");
+        this.jTextField5.setText(aux.valueOf(this.carrega.pro_x.supx)+ " mm");
+        this.jTextField6.setText(aux.valueOf(this.carrega.pro_x.supy)+ " mm");
+        this.jTextField7.setText(aux.valueOf(this.carrega.pro_x.supz)+ " mm");
+
+        sel.HashSetToArray(this.carrega.pro_x);//trocado pelo de cima
+
+        this.carrega.pro_x.isMesh = true;
+
+        this.ShowWAndPoints(this.carrega); // Mostra coordenadas em J3D
+
+        this.jTable.setModel(new DefaultTableModel(this.carrega.pro_x.coord_table,new String [] {"X", "Y", "Z"}));
+
+        this.carrega.CarregadorPonto(this.getVel(), this.getPrecision()); // gera os comandos lineares na ling generica para as coord carregadas setando a vel */
+
+        this.jTextField1.setText(this.carrega.pro_x.toStringSelPlan());
+      }
+      catch (Exception excep)
+      {
+        excep.printStackTrace();
+      }
+    }//If filename
+  }
+
+  FTP ftp = new FTP();
   private JButton jButton1 = new JButton();
   private JRadioButton Fine = new JRadioButton();
   private JRadioButton P10 = new JRadioButton();
@@ -927,113 +968,113 @@ FTP ftp = new FTP();
   private JLabel jLabel11 = new JLabel();
   public JScrollPane scrollPane = new JScrollPane();
   public JTable jTable = new JTable();
- 
-private void copy_actionPerformed(ActionEvent e)
-{ 
-  
- FileDialog f = new FileDialog(this, "Copy to the Controller", FileDialog.LOAD);
- f.setVisible(true);                         // Display the dialog and block.
- 
-try{
- ftp.FtpConnect();
- ftp.putFile(f.getDirectory(), f.getFile());
- ftp.FtpDisconnect();
+
+  private void copy_actionPerformed(ActionEvent e)
+  {
+
+    FileDialog f = new FileDialog(this, "Copy to the Controller", FileDialog.LOAD);
+    f.setVisible(true);                         // Display the dialog and block.
+
+    try{
+      ftp.FtpConnect();
+      ftp.putFile(f.getDirectory(), f.getFile());
+      ftp.FtpDisconnect();
+    }
+    catch(Exception exc)
+    {
+      exc.printStackTrace();
+    }
   }
-  catch(Exception exc)
-	{
-    exc.printStackTrace();
+
+  private void newPointSelectionRef_actionPerformed(ActionEvent e) //throws Exception
+  {
+    if (!this.carrega.pro_x.PointSelArray.isEmpty())
+    {
+      //Workspace bounds
+      String aux = null;
+
+      this.jTextField2.setText(aux.valueOf(this.carrega.pro_x.infx)+ " mm");
+      this.jTextField3.setText(aux.valueOf(this.carrega.pro_x.infy)+ " mm");
+      this.jTextField4.setText(aux.valueOf(this.carrega.pro_x.infz)+ " mm");
+      this.jTextField5.setText(aux.valueOf(this.carrega.pro_x.supx)+ " mm");
+      this.jTextField6.setText(aux.valueOf(this.carrega.pro_x.supy)+ " mm");
+      this.jTextField7.setText(aux.valueOf(this.carrega.pro_x.supz)+ " mm");
+
+      //ZSelection
+      this.carrega.pro_x.planoSelZ = (new Float(this.jTextField1.getText())).floatValue();
+
+
+      System.out.print("Numero de pontos:" + this.carrega.pro_x.n_linhas_arqcoord);
+      Timer t = new Timer();
+
+      this.carrega.pro_x.isMesh = false;
+      sel.PointsSelection(this.carrega.pro_x);
+      t.print("Tempo de eliminao dos pontos coincidentes!");
+
+      Iterator it = this.carrega.pro_x.PointSelArray.iterator();
+      //sel.HashSetToArray(this.carrega.pro_x);
+
+      Timer t1 = new Timer();
+      sel.SelecionaPlanoZ(it, this.carrega.pro_x);
+      t1.print("Tempo de seleco do plano Z!");
+
+      this.jTable.setModel(new DefaultTableModel(this.carrega.pro_x.coord_table, new String [] {"X", "Y", "Z"}));
+
+      this.ShowWAndPoints(this.carrega); // Mostra coordenadas em J3D
+
+
+    }
   }
-}
- 
-private void newPointSelectionRef_actionPerformed(ActionEvent e) //throws Exception
-{  
- if (!this.carrega.pro_x.PointSelArray.isEmpty())
-  {         
-    //Workspace bounds
+
+  private void jButton1_actionPerformed(ActionEvent e)// throws Exception
+  {
     String aux = null;
-
-    this.jTextField2.setText(aux.valueOf(this.carrega.pro_x.infx)+ " mm");
-    this.jTextField3.setText(aux.valueOf(this.carrega.pro_x.infy)+ " mm");
-    this.jTextField4.setText(aux.valueOf(this.carrega.pro_x.infz)+ " mm");
-    this.jTextField5.setText(aux.valueOf(this.carrega.pro_x.supx)+ " mm");
-    this.jTextField6.setText(aux.valueOf(this.carrega.pro_x.supy)+ " mm");
-    this.jTextField7.setText(aux.valueOf(this.carrega.pro_x.supz)+ " mm");
-
-    //ZSelection
-    this.carrega.pro_x.planoSelZ = (new Float(this.jTextField1.getText())).floatValue();
-    
-    
-    System.out.print("Numero de pontos:" + this.carrega.pro_x.n_linhas_arqcoord);
-    Timer t = new Timer();
-    
-    this.carrega.pro_x.isMesh = false;
-    sel.PointsSelection(this.carrega.pro_x);
-    t.print("Tempo de eliminao dos pontos coincidentes!");
-  
-    Iterator it = this.carrega.pro_x.PointSelArray.iterator();
-    //sel.HashSetToArray(this.carrega.pro_x);
-    
-    Timer t1 = new Timer();
-    sel.SelecionaPlanoZ(it, this.carrega.pro_x);
-    t1.print("Tempo de seleco do plano Z!");
-    
-    this.jTable.setModel(new DefaultTableModel(this.carrega.pro_x.coord_table, new String [] {"X", "Y", "Z"}));
-    
-    this.ShowWAndPoints(this.carrega); // Mostra coordenadas em J3D
-    
-    
-  }
-}
-
-private void jButton1_actionPerformed(ActionEvent e)// throws Exception
-{
-String aux = null;
-  //Workspace bounds
+    //Workspace bounds
     this.carrega.pro_x.infx = (new Float(this.jTextField2.getText().substring(0,this.jTextField2.getText().indexOf(" ")))).floatValue();
     this.carrega.pro_x.infy = (new Float(this.jTextField3.getText().substring(0,this.jTextField3.getText().indexOf(" ")))).floatValue();
     this.carrega.pro_x.infz = (new Float(this.jTextField4.getText().substring(0,this.jTextField4.getText().indexOf(" ")))).floatValue();
     this.carrega.pro_x.supx = (new Float(this.jTextField5.getText().substring(0,this.jTextField5.getText().indexOf(" ")))).floatValue();
     this.carrega.pro_x.supy = (new Float(this.jTextField6.getText().substring(0,this.jTextField6.getText().indexOf(" ")))).floatValue();
-    this.carrega.pro_x.supz = (new Float(this.jTextField7.getText().substring(0,this.jTextField7.getText().indexOf(" ")))).floatValue(); 
-    
+    this.carrega.pro_x.supz = (new Float(this.jTextField7.getText().substring(0,this.jTextField7.getText().indexOf(" ")))).floatValue();
+
     this.carrega.pro_x.RobotOffset.Coord_X = (this.carrega.pro_x.supx - this.carrega.pro_x.infx)/2 + this.carrega.pro_x.infx;
     this.carrega.pro_x.RobotOffset.Coord_Y = (this.carrega.pro_x.supy - this.carrega.pro_x.infy)/2 + this.carrega.pro_x.infy;
     //this.carrega.pro_x.RobotOffset.Coord_Z = this.carrega.pro_x.infz;
-    
+
     //Actualize ZSelection
     this.jTextField1.setText(aux.valueOf(new Float(this.carrega.pro_x.planoSelZ)));
     //this.carrega.pro_x.isSolid = true;
-    
+
     //this.showCoord(this.carrega.pro_x);
     this.ShowWAndPoints(this.carrega); // Mostra coordenadas em J3D
-    
-    this.jTable.setModel(new DefaultTableModel(this.carrega.pro_x.coord_table, new String [] {"X", "Y", "Z"}));
-}
 
-/**
- * 
- * 
- * @param
- * @return
- * @see
- * 
- */
-private void BotaoGerarPrograma_actionPerformed(ActionEvent e)
+    this.jTable.setModel(new DefaultTableModel(this.carrega.pro_x.coord_table, new String [] {"X", "Y", "Z"}));
+  }
+
+  /**
+   *
+   *
+   * @param
+   * @return
+   * @see
+   *
+   */
+  private void BotaoGerarPrograma_actionPerformed(ActionEvent e)
   {
-   FileDialog f = new FileDialog(this, "Save", FileDialog.SAVE);
-   f.setDirectory("C:\\Testes\\Prog\\");
-   f.setVisible(true);// Display the dialog and block.
-    
-  try
-  {
-  this.carrega.CarregadorTipoNomePrograma(this.carrega.pro_x ,this.getProtocolo(), this.getVel(), this.getPrecision());
-	this.carrega.CarregadorArquivo(f.getDirectory(), f.getFile());
- 	}
-	catch(Exception exc)
-		{
-    exc.printStackTrace();
+    FileDialog f = new FileDialog(this, "Save", FileDialog.SAVE);
+    f.setDirectory(System.getProperty("user.dir").concat("\\programs"));
+    f.setVisible(true);// Display the dialog and block.
+
+    try
+    {
+      this.carrega.CarregadorTipoNomePrograma(this.carrega.pro_x ,this.getProtocolo(), this.getVel(), this.getPrecision());
+      this.carrega.CarregadorArquivo(f.getDirectory(), f.getFile());
     }
-}
+    catch(Exception exc)
+    {
+      exc.printStackTrace();
+    }
+  }
 
 
 }
