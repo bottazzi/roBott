@@ -25,7 +25,7 @@ tor
 - JavaJDK >= 8.0
 - Gradle >= 6.7
 - JMonkeyEngine >= 3.1
-- Java-ML == 0.1.7.jar ([Download](https://sourceforge.net/projects/java-ml/files/) and add it manually to the src/libs folder, unfortunately the gradle repo is not working anymore)
+- Java-ML == 0.1.7.jar ([Download](https://sourceforge.net/projects/java-ml/files/) and add it manually to the src/libs folder, unfortunately its repo is not responsive a the time of this exercise.)
 
 ## Run
 
@@ -34,7 +34,7 @@ tor
 
 ## How to use
 
-- Alt + Tab keys switch between 3D visualisation interface and Off-line robot programming tool.
+- Alt + Tab keys to switch between 3D visualisation and the GUI tool for Off-line robot programming.
 - [Load Coordinates] Loads the surface of the file.stl model.
 - [Select Points] Slice the model based in the selected Z axis height (e.g. ZSelection contour).
 - [Generate Code] Generates a robot program using the selected points.

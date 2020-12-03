@@ -1,21 +1,16 @@
 package smart.roBott.app.captur;
 
-import java.io.BufferedReader;
-import java.io.FileReader;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
-
 import com.jme3.math.Vector3f;
 import com.jme3.scene.Mesh;
 import com.jme3.scene.VertexBuffer.Type;
 import com.jme3.util.BufferUtils;
-
 import net.sf.javaml.core.kdtree.KDTree;
+
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.util.*;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 /*
 * Thanks kantengri, extracted from https://hub.jmonkeyengine.org/t/stl-import/26131 as StlImporter.java

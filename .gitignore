@@ -7,3 +7,4 @@ target
 *.bat
 *.so
 programs/*
+gradle*

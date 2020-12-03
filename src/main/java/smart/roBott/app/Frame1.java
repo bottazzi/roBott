@@ -29,8 +29,6 @@ import java.awt.event.ActionListener;
 
 import java.util.Iterator;
 
-//import javax.media.j3d.BranchGroup;
-//import javax.media.j3d.Node;
 import javax.swing.BorderFactory;
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -47,7 +45,6 @@ import javax.swing.JTextField;
 import javax.swing.JToolBar;
 import javax.swing.border.BevelBorder;
 import javax.swing.table.DefaultTableModel;
-//import java.text.DecimalFormat;
 
 final public class Frame1 extends JFrame
 {
@@ -132,7 +129,7 @@ final public class Frame1 extends JFrame
   final int P_Max = 200;
   int precisao = this.P_FINE;
 
-
+  RobotWorkspace workspaceObj = null;
 //private double mx,my;
 
   private JButton copy = new JButton();
@@ -186,17 +183,16 @@ final public class Frame1 extends JFrame
    * @see
    **/
 
-  public static void main(String[] args)
-  {
-    Frame1 frame = new Frame1();
-    frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-    Dimension d = Toolkit.getDefaultToolkit().getScreenSize();
-    Dimension frameSize = frame.getSize();
-    frame.setLocation((d.width - frameSize.width) / 2, (d.height - frameSize.height) / 2);
-//    frame.pack();
-    frame.setVisible(true);
-//    Main main = new Main();
-  }
+//  public static void main(String[] args)
+//  {
+//    Frame1 frame = new Frame1();
+//    frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+//    Dimension d = Toolkit.getDefaultToolkit().getScreenSize();
+//    Dimension frameSize = frame.getSize();
+//    frame.setLocation((d.width - frameSize.width) / 2, (d.height - frameSize.height) / 2);
+//    frame.setVisible(true);
+//
+//  }
 
   /***************************************
    * Retorna o protocolo do fabricante.
@@ -457,9 +453,9 @@ final public class Frame1 extends JFrame
   }
 
 
-  public Frame1()
+  public Frame1(RobotWorkspace app)
   {
-
+    workspaceObj = app;
     try
     {
       jbInit();
@@ -917,7 +913,7 @@ final public class Frame1 extends JFrame
     String filename = "";
 
     FileDialog f = new FileDialog(this, "Load", FileDialog.LOAD);
-    f.setDirectory(System.getProperty("user.dir").concat("\\assets"));
+    f.setDirectory(System.getProperty("user.dir").concat("/assets"));
     f.setVisible(true);// Display the dialog and block.
 
     if (!(f.getFile() == null) )
@@ -950,6 +946,8 @@ final public class Frame1 extends JFrame
         this.carrega.CarregadorPonto(this.getVel(), this.getPrecision()); // gera os comandos lineares na ling generica para as coord carregadas setando a vel */
 
         this.jTextField1.setText(this.carrega.pro_x.toStringSelPlan());
+
+        //this.workspaceObj.load();//(filename);
       }
       catch (Exception excep)
       {

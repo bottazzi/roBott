@@ -1,14 +1,13 @@
 package smart.roBott.app;
 
+import smart.roBott.app.captur.StlToMesh;
 import com.jme3.app.SimpleApplication;
-
 import com.jme3.material.Material;
 import com.jme3.math.ColorRGBA;
 import com.jme3.renderer.RenderManager;
 import com.jme3.scene.Geometry;
 import com.jme3.scene.Node;
 import com.jme3.scene.Mesh;
-
 import com.jme3.light.AmbientLight;
 import com.jme3.light.PointLight;
 
@@ -52,7 +51,7 @@ public class RobotWorkspace extends SimpleApplication {
     public void simpleInitApp() {
         Mesh m = null;
         try {
-            m = StlImporter.loadStl(filepath);
+            m = StlToMesh.loadStl(filepath);
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -80,7 +79,7 @@ public class RobotWorkspace extends SimpleApplication {
     public void load(String newFilePath) {
         try {
 
-        Mesh m = StlImporter.loadStl(newFilePath);
+        Mesh m = StlToMesh.loadStl(newFilePath);
 
         Geometry geom = new Geometry("Steel_beam_finished_1x1x15", m);
         Material mat = new Material(assetManager, "Common/MatDefs/Misc/Unshaded.j3md");
