@@ -3,3 +3,7 @@
 *.jar
 *.json
 target
+*.json
+*.bat
+*.so
+programs/*

@@ -1,4 +1,4 @@
-package smart.roBott.app;
+package smart.roBott.app.captur;
 
 import java.io.BufferedReader;
 import java.io.FileReader;
@@ -17,8 +17,11 @@ import com.jme3.util.BufferUtils;
 
 import net.sf.javaml.core.kdtree.KDTree;
 
+/*
+* Thanks kantengri, extracted from https://hub.jmonkeyengine.org/t/stl-import/26131 as StlImporter.java
+* */
 
-public class StlImporter {
+public class StlToMesh {
 
     static Pattern FACET_PAT = Pattern.compile("\\s*facet\\s+normal\\s+(.*?)\\s+(.*?)\\s+(.*)");
     static Pattern VERTEX_PAT = Pattern.compile("\\s*vertex\\s+(.*?)\\s+(.*?)\\s+(.*)");
