@@ -37,12 +37,13 @@ public class RobotWorkspace extends SimpleApplication {
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         Dimension d = Toolkit.getDefaultToolkit().getScreenSize();
         Dimension frameSize = frame.getSize();
-        frame.setLocation((d.width - frameSize.width) / 2, (d.height - frameSize.height) / 2);
+        frame.setLocation(d.width/10, d.height / 10);
         frame.setVisible(true);
 
 
         app.setPauseOnLostFocus(false);
         app.showSettings = true;
+        app.setShowSettings(false);
         app.start();
 
     }

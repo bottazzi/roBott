@@ -93,13 +93,9 @@ final public class Frame1 extends JFrame
   private JLabel jLabel9 = new JLabel();
   private JLabel jLabel10 = new JLabel();
 
-//Programa p;//ponteiro para o programa generico que vai ser utilizado
-
   Carregador carrega = new Carregador();
 
   Select sel = new Select();
-
-//SideCoordView sv;
 
   JPanel telaWorld = new JPanel();
 
@@ -113,8 +109,6 @@ final public class Frame1 extends JFrame
   final int M_LINEAR = 2;
   final int M_CIRCULAR = 3;
   int movimento = this.M_JUNTA;
-
-//String nome;
 
   final int V_BAI = 100;
   final int V_MED = 500;
@@ -174,25 +168,6 @@ final public class Frame1 extends JFrame
     carga.CarregadorPonto(this.velocidade, this.precisao);
   }
 
-
-  /**
-   * Principal
-   *
-   * @param
-   * @return
-   * @see
-   **/
-
-//  public static void main(String[] args)
-//  {
-//    Frame1 frame = new Frame1();
-//    frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-//    Dimension d = Toolkit.getDefaultToolkit().getScreenSize();
-//    Dimension frameSize = frame.getSize();
-//    frame.setLocation((d.width - frameSize.width) / 2, (d.height - frameSize.height) / 2);
-//    frame.setVisible(true);
-//
-//  }
 
   /***************************************
    * Retorna o protocolo do fabricante.
@@ -563,15 +538,10 @@ final public class Frame1 extends JFrame
     jTable.setBorder(BorderFactory.createBevelBorder(BevelBorder.LOWERED));
     jTextField2.setBounds(new Rectangle(100, 455, 70, 25));
     jTextField3.setBounds(new Rectangle(100, 480, 70, 25));
-
     jTextField4.setBounds(new Rectangle(100, 510, 70, 25));
-
     jTextField5.setBounds(new Rectangle(100, 555, 70, 25));
-
     jTextField6.setBounds(new Rectangle(100, 580, 70, 25));
-
     jTextField7.setBounds(new Rectangle(100, 605, 70, 25));
-
     jLabel3.setText("X");
     jLabel3.setBounds(new Rectangle(50, 465, 34, 14));
     jLabel4.setText("Y");
@@ -611,7 +581,6 @@ final public class Frame1 extends JFrame
     telaWorld.setBounds(new Rectangle(235, 20, 565, 645));
     telaWorld.setBackground(Color.blue);
     telaWorld.setBorder(BorderFactory.createEmptyBorder(2, 2, 2, 2));
-
     scrollPane.getViewport().add(jTable, null);
     this.getContentPane().add(scrollPane, null);
     this.getContentPane().add(jLabel11, null);
@@ -641,7 +610,6 @@ final public class Frame1 extends JFrame
     this.getContentPane().add(telaWorld, null);
     this.getContentPane().add(copy, null);
     this.getContentPane().add(load, null);
-    //   this.getContentPane().add(scrollPane, null);
     load.setText("Load Coordinates");
     load.setBounds(new Rectangle(10, 120, 210, 35));
     load.addActionListener(new ActionListener()
@@ -781,11 +749,9 @@ final public class Frame1 extends JFrame
       }
     });
 
-
     InitRobot();
 
   }
-
 
   public void InitRobot() throws Exception
   {
@@ -795,7 +761,7 @@ final public class Frame1 extends JFrame
 
     //   this.carrega.ComponentsList.add(component);
 
-    sel.HashSetToArray( this.carrega.Componente);//Programa(this.carrega.ComponentsList.get(0)));
+    sel.HashSetToArray( this.carrega.Componente);
 
     showWA(this.carrega);
 
@@ -805,6 +771,29 @@ final public class Frame1 extends JFrame
     this.jTextField5.setText(String.valueOf( this.carrega.Componente.supx)+ " mm");
     this.jTextField6.setText(String.valueOf( this.carrega.Componente.supy)+ " mm");
     this.jTextField7.setText(String.valueOf( this.carrega.Componente.supz)+ " mm");
+
+    try {
+      String filepath = System.getProperty("user.dir").concat("/assets/steel_beam_finished_1x1x15.stl");
+
+      this.carrega.pro_x = this.carrega.getPrograma();
+
+      this.carrega.CarregaArquivoCoordEntrada(filepath, this.carrega.pro_x);
+
+      sel.HashSetToArray(this.carrega.pro_x);
+
+      this.carrega.pro_x.isMesh = true;
+
+      this.jTable.setModel(new DefaultTableModel(this.carrega.pro_x.coord_table,new String [] {"X", "Y", "Z"}));
+
+      this.carrega.CarregadorPonto(this.getVel(), this.getPrecision()); // gera os comandos lineares na ling generica para as coord carregadas setando a vel */
+
+      this.jTextField1.setText(this.carrega.pro_x.toStringSelPlan());
+
+    }
+    catch (Exception excep)
+    {
+      excep.printStackTrace();
+    }
 
   }
 
@@ -829,83 +818,18 @@ final public class Frame1 extends JFrame
 
   }
 
-//  private void showWA(Carregador carga) throws Exception
-//  {
-//      telaWorld.removeAll();//limpa a tela
-//      sv = new SideCoordView(carga);//cria a tela
-//      sv.setBounds(telaWorld.getBounds());//tamanho da tela
-//      sv.setVisible(true); //apresenta
-//      telaWorld.add("Center",sv.getCanvas()); //adiciona
-//      sv.dispose();
-//  }
-
-
-  private void showWA(Carregador carga) throws Exception {
-
-
-//    Chart chart = AWTChartComponentFactory.chart(Quality.Advanced, "awt");
-//    Workcell wc = new Workcell(3,3,0);
-//    chart.getScene().getGraph().add(wc.getShape());
-//    telaWorld.add((Panel)chart.getCanvas());
-
-
-//    Chart chart = AWTChartComponentFactory.chart(Quality.Advanced, IChartComponentFactory.Toolkit.swing);
-////    chart.
-//    Workcell wc = new Workcell(3,3,0);
-//
-//    org.jzy3d.plot3d.primitives.Shape surface = wc.getShape(); //Builder.buildOrthonormal(new OrthonormalGrid(rX, stepsX, rY, stepsY), mapper);
-//    surface.setColorMapper(new ColorMapper(new ColorMapRainbow(), surface.getBounds().getZmin(), surface.getBounds().getZmax(), new org.jzy3d.colors.Color(1, 1, 1, .5f)));
-//    surface.setFaceDisplayed(true);
-//    surface.setWireframeDisplayed(false);
-////    surface.set
-//
-////    org.jzy3d.chart.Chart chart = new org.jzy3d.chart.Chart(Quality.Advanced,"swing");
-//    chart.getScene().getGraph().add(surface);
-//
-//    IAxeLayout l = chart.getAxeLayout();
-////    l.setMainColor(org.jzy3d.colors.Color.GRAY);
-//
-//    //JPanel p = new JPanel(new BorderLayout()); //another panel will be added to this panel and aligned left (BorderLayout.WEST)
-//    telaWorld.add((JPanel)chart.getCanvas(),BorderLayout.CENTER);
-
-
-//    chart.getScene().getGraph().add(wc.getShape());
-//
-//    AWTCameraMouseController controller = new AWTCameraMouseController(chart);
-//    Component canvas = (Component) chart.getCanvas();
-//    canvas.addMouseListener(controller);
-//    canvas.addMouseMotionListener(controller);
-//    canvas.addMouseWheelListener(controller);
-//    canvas.setBounds(telaWorld.getBounds());//tamanho da tela
-//    canvas.setSize(3000,1500);
-//    canvas.setVisible(true);
-//    telaWorld.add(canvas, BorderLayout.CENTER);
-
-//    Workcell wc = new Workcell(3,3,0);
-
-
-
-//    this.setContentPane(telaWorld);
-//    this.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-//    this.pack();
-//    this.setTitle("Embed Newt Test");
-//    this.setVisible(true);
-
+  private void showWA(Carregador carga) throws Exception
+  {
+  /**
+   * J3D removed, load empty workspace using new 3D engine here
+   */
   }
-
-
-
 
   private void ShowWAndPoints(Carregador carga)//Programa newP)
   {
-
-//  sv.NewSolid(carga, false);
-//
-//  sv.setBounds(telaWorld.getBounds());//tamanho da tela
-//  sv.setVisible(true); //apresenta
-
-    // telaWorld.add("Center",sv.getCanvas()); //adiciona
-    // sv.dispose();
+    /**
+     * J3D removed, load workspace with objects using new 3D engine here
+     */
   }
 
   private void load_actionPerformed(ActionEvent e)
