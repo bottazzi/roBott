@@ -757,13 +757,11 @@ final public class Frame1 extends JFrame
   {
     this.carrega.Componente = this.carrega.getPrograma();
 
-    this.carrega.CarregaArquivoCoordEntrada(System.getProperty("user.dir").concat("/assets/bracao.stl"),  this.carrega.Componente);
-
-    //   this.carrega.ComponentsList.add(component);
-
-    sel.HashSetToArray( this.carrega.Componente);
-
-    showWA(this.carrega);
+//    this.carrega.CarregaArquivoCoordEntrada(System.getProperty("user.dir").concat("/assets/Models/bracao.stl"),  this.carrega.Componente);
+//
+//    sel.HashSetToArray( this.carrega.Componente);
+//
+//    showWA(this.carrega);
 
     this.jTextField2.setText(String.valueOf( this.carrega.Componente.infx)+ " mm");
     this.jTextField3.setText(String.valueOf( this.carrega.Componente.infy)+ " mm");
@@ -773,7 +771,7 @@ final public class Frame1 extends JFrame
     this.jTextField7.setText(String.valueOf( this.carrega.Componente.supz)+ " mm");
 
     try {
-      String filepath = System.getProperty("user.dir").concat("/assets/steel_beam_finished_1x1x15.stl");
+      String filepath = System.getProperty("user.dir").concat("/assets/Models/steel_beam_finished_1x1x15.stl");
 
       this.carrega.pro_x = this.carrega.getPrograma();
 
